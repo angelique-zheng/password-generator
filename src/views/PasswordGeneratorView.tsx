@@ -2,6 +2,7 @@ import Clipboard from '@react-native-clipboard/clipboard';
 import Slider from '@react-native-community/slider';
 import React, { useCallback, useEffect, useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StrengthIndicator } from '../components/StrengthIndicator';
 import { UIButton } from '../components/UIButton';
 import { UICheckbox } from '../components/UICheckbox';
 import { UIIcon } from '../components/UIIcon';
@@ -56,6 +57,7 @@ export const PasswordGeneratorView: React.FC = () => {
                 <Text style={styles.password}>{password}</Text>
                 <UIIcon icon={icons.copyToClipboard} width={36} height={36} />
             </TouchableOpacity>
+            <StrengthIndicator password={password} />
             <View style={styles.passwordLengthContainer}>
                 <Text>{strings.passwordLength}</Text>
                 <Text>{passwordLength}</Text>
@@ -63,7 +65,7 @@ export const PasswordGeneratorView: React.FC = () => {
             <Slider
                 style={styles.passwordLengthSlider}
                 value={passwordLength}
-                minimumValue={6}
+                minimumValue={2}
                 maximumValue={100}
                 minimumTrackTintColor="#537DD6"
                 maximumTrackTintColor="#DEDCDC"
